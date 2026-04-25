@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>RzX Underground</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    color: #00ffcc;
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+/* FUNDO GLITCH */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        #00ffcc10,
+        #00ffcc10 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    animation: scan 6s linear infinite;
+    z-index: -1;
+}
+
+@keyframes scan {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100%); }
+}
+
+/* HEADER */
+header {
+    padding: 20px;
+    border-bottom: 1px solid #00ffcc33;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 22px;
+    letter-spacing: 3px;
+    animation: glitch 1s infinite;
+}
+
+/* GLITCH TEXTO */
+@keyframes glitch {
+    0% { text-shadow: 2px 0 red, -2px 0 blue; }
+    50% { text-shadow: -2px 0 red, 2px 0 blue; }
+    100% { text-shadow: 2px 0 red, -2px 0 blue; }
+}
+
+.menu a {
+    color: #00ffcc;
+    margin-left: 20px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: red;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 60px;
+    animation: glitch 1s infinite;
+}
+
+.hero p {
+    opacity: 0.6;
+    margin-top: 20px;
+}
+
+/* BOTÃO PADRÃO */
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    border: 1px solid #00ffcc;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: red;
+    color: black;
+    box-shadow: 0 0 20px red;
+}
+
+/* 🔮 BOTÃO ROXO */
+.btn-purple {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 30px;
+    border: 1px solid #a020f0;
+    color: #a020f0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-purple:hover {
+    background: #a020f0;
+    color: black;
+    box-shadow: 0 0 25px #a020f0;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 50px;
+}
+
+.card {
+    border: 1px solid #00ffcc22;
+    padding: 20px;
+    background: #000000aa;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px red;
+}
+
+/* TERMINAL */
+.terminal {
+    margin: 50px;
+    border: 1px solid #00ffcc33;
+    padding: 20px;
+    height: 220px;
+    overflow-y: auto;
+    background: black;
+}
+
+.line {
+    margin: 5px 0;
+    animation: fade 0.5s;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #00ffcc33;
+    opacity: 0.4;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">RzX//UNDERGROUND</div>
+    <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">System</a>
+        <a href="#">Access</a>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>ACCESS CORE</h1>
+    <p>unauthorized system interface</p>
+
+    <div class="btn" onclick="hack()">iniciar</div>
+
+    <!-- BOTÃO ROXO -->
+    <div class="btn-purple" onclick="entrarServidor()">
+        ENTRAR NO SERVIDOR
+    </div>
+
+</section>
+
+<section class="cards">
+    <div class="card">
+        <h3>Firewall</h3>
+        <p>breach simulation active</p>
+    </div>
+
+    <div class="card">
+        <h3>Tracker</h3>
+        <p>location spoof enabled</p>
+    </div>
+
+    <div class="card">
+        <h3>Core</h3>
+        <p>system override ready</p>
+    </div>
+</section>
+
+<div class="terminal" id="terminal"></div>
+
+<footer>
+    rzX // darknet interface
+</footer>
+
+<script>
+const terminal = document.getElementById("terminal");
+
+function addLine(text) {
+    const div = document.createElement("div");
+    div.className = "line";
+    div.innerText = text;
+    terminal.appendChild(div);
+    terminal.scrollTop = terminal.scrollHeight;
+}
+
+function hack() {
+    const mensagens = [
+        "injecting payload...",
+        "bypassing security...",
+        "accessing node...",
+        "decrypting data...",
+        "ACCESS GRANTED"
+    ];
+
+    let i = 0;
+
+    function loop() {
+        if (i < mensagens.length) {
+            addLine(mensagens[i]);
+            i++;
+            setTimeout(loop, 600);
+        }
+    }
+
+    loop();
+}
+
+/* 🔗 LINK DO SERVIDOR */
+function entrarServidor() {
+    window.open("https://discord.gg/3XvYbVedHP", "_blank");
+}
+</script>
+
+</body>
+</html>
